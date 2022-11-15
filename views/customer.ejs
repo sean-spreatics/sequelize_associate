@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <h1>전체 고객 조회</h1>
+    <a href="/">홈으로 이동</a>
+
+    <% if (customers) { %>
+    <ul>
+      <% for (let customer of customers) {%>
+      <li>
+        <%= customer.user_id %> - <%= customer.name %> - <%= customer.birthday
+        %>
+        <button onclick="deleteCustomer(this, '<%= customer.user_id %>');">
+          고객 삭제
+        </button>
+      </li>
+      <% } %>
+    </ul>
+    <% } %>
+
+    <script>
+      function deleteCustomer(obj, userid) {
+        axios({
+          method: 'POST',
+          url: '/delete/customer',
+          data: {
+            userid: userid,
+          },
+        })
+          .then((res) => {
+            return res.data;
+          })
+          .then((data) => {
+            alert(data);
+
+            // 해당 버튼을 감싸는 li 태그 삭제
+            obj.closest('li').remove();
+          });
+      }
+    </script>
+  </body>
+</html>
