@@ -64,15 +64,6 @@ SELECT * FROM orderlist;
 
 
 
--- ============================ [JOIN] ============================
--- 유저아이디를 기준으로 customer와 orderlist 조인 (모든 컬럼에 대해 모든 행 보여주기) 
-SELECT * 
-FROM customer
-	INNER JOIN orderlist
-  ON customer.user_id = orderlist.customer_id;
-  
-  
-
 -- ============================ [DCL] ============================
 -- MySQL 사용자 추가하기
 CREATE USER 'user'@'%' IDENTIFIED BY '1234'; 

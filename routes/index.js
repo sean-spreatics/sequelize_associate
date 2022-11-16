@@ -9,6 +9,6 @@ router.get('/', controller.main);
 router.get('/getCustomers', controller.getCustomers);
 router.get('/getOrderlists', controller.getOrderlists);
 
-router.post('/delete/customer', controller.deleteCustomer);
+router.delete('/delete/customer', controller.deleteCustomer);
 
 module.exports = router;
