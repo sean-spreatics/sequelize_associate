@@ -27,12 +27,11 @@ db.Orderlist = require('./Orderlist')(sequelize, Sequelize);
 // Orderlist table은 Customer의 pk인 user_id를 customer_id 이름으로 foreign key를 가짐
 db.Customer.hasMany(db.Orderlist, {
   foreignKey: 'customer_id',
-  allowNull: false,
-  constraints: true,
-  onDelete: 'cascade',
+  sourceKey: 'user_id',
 });
 db.Orderlist.belongsTo(db.Customer, {
   foreignKey: 'customer_id',
+  targetKey: 'user_id',
 });
 
 module.exports = db;

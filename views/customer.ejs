@@ -40,7 +40,9 @@
           })
           .then((data) => {
             alert(data);
-            obj.closest('li').remove(); // 해당 버튼을 감싸는 li 태그 삭제
+
+            // 해당 버튼을 감싸는 li 태그 삭제
+            obj.closest('li').remove();
           });
       }
     </script>
