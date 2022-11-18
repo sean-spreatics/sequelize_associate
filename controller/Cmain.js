@@ -27,7 +27,6 @@ exports.getTotal = (req, res) => {
       { model: models.Orderlist },
     ],
     raw: true, // 단순히 값을 사용하려는 경우, 조회 결과를 객체로 표기하는 옵션인 raw: true 설정 필요
-    // https://www.google.com/search?q=sequelize+raw+true+%EC%9D%98%EB%AF%B8&oq=sequelize+raw+true+%EC%9D%98%EB%AF%B8&aqs=edge..69i57j0i512j0i30l2j0i8i30l3j69i60.6159j0j1&sourceid=chrome&ie=UTF-8
   }).then((result) => {
     // * Chrome 브라우저의 경우, JSONVue 확장프로그램 설치시 데이터 출력 결과를 가독성있게 볼 수 있음
     // https://chrome.google.com/webstore/detail/jsonvue/chklaanhfefbnpoihckbnefhakgolnmc
@@ -39,13 +38,16 @@ exports.getTotal = (req, res) => {
 // 쿼리문이 복잡한 경우 query() 메서드를 이용해 raw query 사용
 exports.getSql = (req, res) => {
   const query = `SELECT * 
-    FROM customer
-    INNER JOIN orderlist
-    ON customer.user_id = orderlist.customer_id;`;
+  FROM customer
+  INNER JOIN orderlist
+  ON customer.user_id = orderlist.customer_id;`;
 
   models.sequelize
     .query(query, { type: models.sequelize.QueryTypes.SELECT })
     .then((result) => {
+      // * Chrome 브라우저의 경우, JSONVue 확장프로그램 설치시 데이터 출력 결과를 가독성있게 볼 수 있음
+      // https://chrome.google.com/webstore/detail/jsonvue/chklaanhfefbnpoihckbnefhakgolnmc
+
       res.send(result);
     });
 };
