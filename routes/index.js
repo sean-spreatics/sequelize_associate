@@ -10,6 +10,7 @@ router.get('/getCustomers', controller.getCustomers);
 router.get('/getOrderlists', controller.getOrderlists);
 router.get('/getTotal', controller.getTotal);
 router.get('/getSql', controller.getSql);
+router.get('/getTwoResults', controller.getTwoResults);
 
 router.delete('/delete/customer', controller.deleteCustomer);
 

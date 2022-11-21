@@ -64,3 +64,10 @@ exports.deleteCustomer = (req, res) => {
     );
   });
 };
+
+exports.getTwoResults = async (req, res) => {
+  let result1 = await models.Customer.findAll();
+  let result2 = await models.Orderlist.findAll();
+
+  res.render('both', { customers: result1, orderlists: result2 });
+};
